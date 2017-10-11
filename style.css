@@ -20,7 +20,7 @@ wrapper {
 }
 button {
   margin: 40px 30px;
-  color: #929497;
+  background-color: #929497;
   border-radius: 28px;
   width: 150px;
   height: 40px;
@@ -28,8 +28,8 @@ button {
   color: #fff;
 
 }
-button:hov {
-  color: #eb008b;
+button:hover {
+  background-color: #eb008b;
   color: #fff;
 }
 button:disabled {
