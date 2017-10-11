@@ -12,60 +12,68 @@ var randomNumber = 0;
 var rangeSubmitButton = document.querySelector('#submit-range-button');
 var lowNumber = document.querySelector('#low-number')
 var highNumber = document.querySelector('#high-number')
-
+var rangeError = document.querySelector('.range-error')
+var low = 0
+var high = 100
 
 //Function to grab the number entered in the input on click of guess button
 function getGuess () {
- event.preventDefault()
- var answer = parseInt(guessNumber.value);
- guess.innerText = answer
- checkGuessWithRandom()
- testForCorrectDataFromInput()
+  event.preventDefault()
+  var answer = parseInt(guessNumber.value);
+  guess.innerText = answer
+  checkGuessWithRandom()
+  testForCorrectDataFromInput()
 }
 
 //Function to Create a Random Number between 1 and 100
-function randomNumberGenerator() {
- randomNumber = Math.round((Math.random() * 100) + 1);
-
-//randomNumber = Math.round((Math.random()* (max - min) + min);
+function randomNumberGenerator(low, high) {
+randomNumber = Math.round((Math.random() * (high - low+1) + low));
+console.log(randomNumber + " is random number")
 }
 //Function to test for NaN
-function NaNTest() {
-  console.log("testing the NaNTest Function");
-  enableButtons();
+// function NaNTest() {
+//   console.log("testing the NaNTest Function");
+//   enableButtons();
 
-};
+// };
+
+//event listener to run randomNumberGenerator on load
+window.addEventListener("load", function load(){
+    randomNumberGenerator(low, high)
+});
+
+
+
 
 // Function to test for input data 
 function testForCorrectDataFromInput() {
-   var answer = parseInt(guessNumber.value);
-   console.log(answer)
-    if (isNaN(answer)) {
+  var answer = parseInt(guessNumber.value);
+  if (isNaN(answer)) {
     error.innerText = "Thats Not a Number, please guess again with a number between 1 and 100 only"
-  } else if (answer > 100 || answer < 1) {
+  } else if (answer > high || answer < low) {
     error.innerText = "WARNING: you are out of range. Only guess a Number Between 1 and 100"
   } else {
     error.innerText = "your last guess was..."
   }
 }
-  
+
 
 //Compare User Guess with the Random Number
 function checkGuessWithRandom() {
- 
+
   var  answer = parseInt(guessNumber.value);
-    if (answer < randomNumber) {
+  if (answer < randomNumber) {
     yourGuess.innerText = "that is too Low"
   } else if (answer > randomNumber) {
     yourGuess.innerText = "that is too High"
   } else if (answer === randomNumber) {
     yourGuess.innerText = "Boom"
     window.alert("Winner Winner Chicken Dinner")
-    //plusten ()
-  } else {
-    yourGuess.innerText = "Boom Chicka Boom"
+//plusten ()
+} else {
+  yourGuess.innerText = "Boom Chicka Boom"
 
-  }
+}
 }
 
 
@@ -79,32 +87,32 @@ function clearButtonFunction (){
 
 //Disable buttons
 function disableButtons () {
- console.log("disableButtons is working");
- document.getElementById('guess-button').disabled = true;
- document.getElementById('clear-button').disabled = true;
- document.getElementById('reset').disabled = true;
- document.getElementById('submit-range-button').disabled = true;
+  console.log("disableButtons is working");
+  document.getElementById('guess-button').disabled = true;
+  document.getElementById('clear-button').disabled = true;
+  document.getElementById('reset').disabled = true;
+  document.getElementById('submit-range-button').disabled = true;
 }
 
 // Enable Buttons
 function enableButtons () {
- console.log("enableButtons is working");
- document.querySelector('#guess-button').disabled = false;
- document.querySelector('#clear-button').disabled = false;
- document.querySelector('#reset').disabled = false;
- document.getElementById('submit-range-button').disabled = false;
+  console.log("enableButtons is working");
+  document.querySelector('#guess-button').disabled = false;
+  document.querySelector('#clear-button').disabled = false;
+  document.querySelector('#reset').disabled = false;
+  document.getElementById('submit-range-button').disabled = false;
 }
 
 //Reset Buttons
 function resetButtonFunction () {
- 
- yourGuess.innerText = "";
- guessNumber.innerText = "";
- guess.innerText = "##";
- error.innerText = "";
- document.getElementById("number").value = "";
- randomNumberGenerator() 
- disableButtons()
+
+  yourGuess.innerText = "";
+  guessNumber.innerText = "";
+  guess.innerText = "##";
+  error.innerText = "";
+  document.getElementById("number").value = "";
+  randomNumberGenerator(low, high) 
+  disableButtons()
 
 }
 
@@ -115,19 +123,17 @@ function rangeActivateSubmitButton() {
 //get range from the input fields
 function rangeSubmit () {
   event.preventDefault()
-  lowNumber = parseInt(lowNumber.value);
-  highNumber = parseInt(highNumber.value)
-
-    if (isNaN(lowNumber) || isNaN(highNumber)) {
-    error.innerText = "Thats Not a Number, please guess again with a number between 1 and 100 only"
-  } else if (answer > 100 || answer < 1) {
-    error.innerText = "WARNING: you are out of range. Only guess a Number Between 1 and 100"
-  } else {
-    error.innerText = "your last guess was..."
-  }
+  low = parseInt(lowNumber.value);
+  high = parseInt(highNumber.value)
+  resetButtonFunction()
+  randomNumberGenerator (low, high)
+  if (isNaN(low) || isNaN(high)) {
+    rangeError.innerText = "Thats Not a Number, please try again"
+  } 
 
   console.log("rangeSubmitButton is working")
 }
+
 
 //Button Listener
 guessButton.addEventListener("click", getGuess);
