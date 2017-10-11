@@ -19,7 +19,7 @@ var randomNumber = Math.round((Math.random() * 100) + 1);
 //Function to grab the number entered in the input on click of guess button
 function getGuess () {
  event.preventDefault()
- NaNTest()
+ // NaNTest()
  var answer = parseInt(guessNumber.value);
  guess.innerText = answer
  checkGuessWithRandom()
@@ -32,14 +32,8 @@ function randomNumberGenerator() {
 //Function to test for NaN
 function NaNTest() {
   console.log("testing the NaNTest Function")
-  var  answer = parseInt(guessNumber.value);
-//   if (isNaN(answer)) {
-//     yourGuess.innerText = "Hey pal, try guessing a number!"
-
-//   } else {
-//     //activate buttons
-//   }
-// };
+  console.log("enableButtons is working")
+};
 
 
 
@@ -67,21 +61,32 @@ function checkGuessWithRandom() {
 
 //Clear Buttons
 function clearButtonFunction (){
- console.log("clearButton Function is working")
- // reset input
-// 
+  event.preventDefault()
+  console.log("clearButton Function is working")
+  document.getElementById("number").value = "";
 }
 
 //Activate buttons
 
 
-//Disable Buttons
-
+// Buttons
+function enableButtons () {
+ console.log("enableButtons is working")
+}
 
 //Reset Buttons
 function resetButtonFunction () {
  console.log('testing the resetButtonFunction is working')
+ yourGuess.innerText = "";
+ guessNumber.innerText = "";
+ guess.innerText = "##";
+ document.getElementById("number").value = "";
+ randomNumberGenerator() 
+
 }
+//CLEAR THE DOM
+//SET NEW RANDOM NUMBER
+//DISABLE THE RESET BUTTON
 
 //Button Listener
 guessButton.addEventListener("click", getGuess)

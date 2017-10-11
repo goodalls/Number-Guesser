@@ -1,5 +1,5 @@
 body {
-  font-family: 'open sans'; 
+  font-family: 'open sans', sans-serif; 
   font-weight: bold 700, light 300;
   text-align: center;
   color: #404041;
@@ -29,7 +29,6 @@ button {
 
 }
 button:hov {
-  
   color: #eb008b;
   color: #fff;
 }
