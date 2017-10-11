@@ -8,7 +8,7 @@ var clearButton = document.querySelector('#clear-button');
 var inputCheck = document.querySelector('#number');
 var resetButton = document.querySelector('#reset');
 var error = document.querySelector('.err');
-var randomNumber = Math.round((Math.random() * 100) + 1);
+var randomNumber = 0;
 
 
 
@@ -23,7 +23,8 @@ function getGuess () {
 
 //Function to Create a Random Number between 1 and 100
 function randomNumberGenerator() {
- var randomNumber = Math.round((Math.random() * 100) + 1);
+ randomNumber = Math.round((Math.random() * 100) + 1);
+
 }
 //Function to test for NaN
 function NaNTest() {
@@ -77,6 +78,7 @@ function disableButtons () {
  document.getElementById('guess-button').disabled = true;
  document.getElementById('clear-button').disabled = true;
  document.getElementById('reset').disabled = true;
+ document.getElementById('submit-range-button').disabled = true;
 }
 
 // Enable Buttons
@@ -85,6 +87,7 @@ function enableButtons () {
  document.querySelector('#guess-button').disabled = false;
  document.querySelector('#clear-button').disabled = false;
  document.querySelector('#reset').disabled = false;
+ document.getElementById('submit-range-button').disabled = false;
 }
 
 //Reset Buttons
@@ -99,6 +102,8 @@ function resetButtonFunction () {
  disableButtons()
 
 }
+
+//get range from the input fields
 
 
 //Button Listener
