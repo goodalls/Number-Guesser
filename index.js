@@ -6,7 +6,7 @@ var guessButton = document.querySelector("#guess-button");
 var yourGuess = document.querySelector('.your-guess');
 var clearButton = document.querySelector('#clear-button');
 var inputCheck = document.querySelector('#number');
-var resetButton = document.querySelector('#reset')
+var resetButton = document.querySelector('#reset');
 
 
 
@@ -31,8 +31,8 @@ function randomNumberGenerator() {
 }
 //Function to test for NaN
 function NaNTest() {
-  console.log("testing the NaNTest Function")
-  console.log("enableButtons is working")
+  console.log("testing the NaNTest Function");
+  enableButtons();
 };
 
 
@@ -66,12 +66,19 @@ function clearButtonFunction (){
   document.getElementById("number").value = "";
 }
 
-//Activate buttons
+//Disable buttons
+// function disableButtons () {
+//  console.log("disableButtons is working");
+//  document.getElementById('guess-button').disabled = true;
+//  document.getElementById('clear-button').disabled = true;
+//  document.getElementById('reset').disabled = true;
 
-
-// Buttons
+// Enable Buttons
 function enableButtons () {
- console.log("enableButtons is working")
+ console.log("enableButtons is working");
+ document.querySelector('#guess-button').disabled = false;
+ document.querySelector('#clear-button').disabled = false;
+ document.querySelector('#reset').disabled = false;
 }
 
 //Reset Buttons
@@ -82,17 +89,16 @@ function resetButtonFunction () {
  guess.innerText = "##";
  document.getElementById("number").value = "";
  randomNumberGenerator() 
+ // disableButtons()
 
 }
-//CLEAR THE DOM
-//SET NEW RANDOM NUMBER
-//DISABLE THE RESET BUTTON
+
 
 //Button Listener
-guessButton.addEventListener("click", getGuess)
-clearButton.addEventListener("click", clearButtonFunction)
-inputCheck.addEventListener('keyup', NaNTest)
-resetButton.addEventListener('click', resetButtonFunction)
+guessButton.addEventListener("click", getGuess);
+clearButton.addEventListener("click", clearButtonFunction);
+inputCheck.addEventListener('keyup', NaNTest);
+resetButton.addEventListener('click', resetButtonFunction);
 
 
 
