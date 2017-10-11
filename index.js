@@ -7,11 +7,7 @@ var yourGuess = document.querySelector('.your-guess');
 var clearButton = document.querySelector('#clear-button');
 var inputCheck = document.querySelector('#number');
 var resetButton = document.querySelector('#reset');
-
-
-
-// Why doesn't this work????????????
-// var answer = parseInt(guessNumber.value);
+var error = document.querySelector('.err');
 var randomNumber = Math.round((Math.random() * 100) + 1);
 
 
@@ -19,10 +15,10 @@ var randomNumber = Math.round((Math.random() * 100) + 1);
 //Function to grab the number entered in the input on click of guess button
 function getGuess () {
  event.preventDefault()
- // NaNTest()
  var answer = parseInt(guessNumber.value);
  guess.innerText = answer
  checkGuessWithRandom()
+ testForCorrectDataFromInput()
 }
 
 //Function to Create a Random Number between 1 and 100
@@ -33,18 +29,31 @@ function randomNumberGenerator() {
 function NaNTest() {
   console.log("testing the NaNTest Function");
   enableButtons();
+
 };
 
-
+// Function to test for input data 
+function testForCorrectDataFromInput() {
+   var answer = parseInt(guessNumber.value);
+   console.log(answer)
+    if (isNaN(answer)) {
+    error.innerText = "Thats Not a Number, please guess again with a number between 1 and 100 only"
+  } else if (answer > 100 || answer < 1) {
+    error.innerText = "WARNING: you are out of range. Only guess a Number Between 1 and 100"
+  } else {
+    error.innerText = "your last guess was..."
+  }
+}
+  
 
 //Compare User Guess with the Random Number
 function checkGuessWithRandom() {
-  randomNumberGenerator();
+ 
   var  answer = parseInt(guessNumber.value);
     if (answer < randomNumber) {
-    yourGuess.innerText = "that is to Low"
+    yourGuess.innerText = "that is too Low"
   } else if (answer > randomNumber) {
-    yourGuess.innerText = "that is to High 4:20"
+    yourGuess.innerText = "that is too High"
   } else if (answer === randomNumber) {
     yourGuess.innerText = "Boom"
     window.alert("Winner Winner Chicken Dinner")
@@ -53,10 +62,6 @@ function checkGuessWithRandom() {
   }
 }
 
-//Reset input
- function resetInputField() {
-   
- }
 
 
 //Clear Buttons
@@ -67,11 +72,12 @@ function clearButtonFunction (){
 }
 
 //Disable buttons
-// function disableButtons () {
-//  console.log("disableButtons is working");
-//  document.getElementById('guess-button').disabled = true;
-//  document.getElementById('clear-button').disabled = true;
-//  document.getElementById('reset').disabled = true;
+function disableButtons () {
+ console.log("disableButtons is working");
+ document.getElementById('guess-button').disabled = true;
+ document.getElementById('clear-button').disabled = true;
+ document.getElementById('reset').disabled = true;
+}
 
 // Enable Buttons
 function enableButtons () {
@@ -87,9 +93,10 @@ function resetButtonFunction () {
  yourGuess.innerText = "";
  guessNumber.innerText = "";
  guess.innerText = "##";
+ error.innerText = "";
  document.getElementById("number").value = "";
  randomNumberGenerator() 
- // disableButtons()
+ disableButtons()
 
 }
 
@@ -97,9 +104,9 @@ function resetButtonFunction () {
 //Button Listener
 guessButton.addEventListener("click", getGuess);
 clearButton.addEventListener("click", clearButtonFunction);
-inputCheck.addEventListener('keyup', NaNTest);
+// inputCheck.addEventListener('keyup', NaNTest);
 resetButton.addEventListener('click', resetButtonFunction);
-
+inputCheck.addEventListener('keyup', enableButtons);
 
 
 
