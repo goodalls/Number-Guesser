@@ -9,7 +9,9 @@ var inputCheck = document.querySelector('#number');
 var resetButton = document.querySelector('#reset');
 var error = document.querySelector('.err');
 var randomNumber = 0;
-
+var rangeSubmitButton = document.querySelector('#submit-range-button');
+var lowNumber = document.querySelector('#low-number')
+var highNumber = document.querySelector('#high-number')
 
 
 //Function to grab the number entered in the input on click of guess button
@@ -25,6 +27,7 @@ function getGuess () {
 function randomNumberGenerator() {
  randomNumber = Math.round((Math.random() * 100) + 1);
 
+//randomNumber = Math.round((Math.random()* (max - min) + min);
 }
 //Function to test for NaN
 function NaNTest() {
@@ -58,8 +61,10 @@ function checkGuessWithRandom() {
   } else if (answer === randomNumber) {
     yourGuess.innerText = "Boom"
     window.alert("Winner Winner Chicken Dinner")
+    //plusten ()
   } else {
     yourGuess.innerText = "Boom Chicka Boom"
+
   }
 }
 
@@ -92,7 +97,7 @@ function enableButtons () {
 
 //Reset Buttons
 function resetButtonFunction () {
- console.log('testing the resetButtonFunction is working')
+ 
  yourGuess.innerText = "";
  guessNumber.innerText = "";
  guess.innerText = "##";
@@ -103,8 +108,26 @@ function resetButtonFunction () {
 
 }
 
-//get range from the input fields
+function rangeActivateSubmitButton() {
+  document.getElementById('submit-range-button').disabled = false;
+}
 
+//get range from the input fields
+function rangeSubmit () {
+  event.preventDefault()
+  lowNumber = parseInt(lowNumber.value);
+  highNumber = parseInt(highNumber.value)
+
+    if (isNaN(lowNumber) || isNaN(highNumber)) {
+    error.innerText = "Thats Not a Number, please guess again with a number between 1 and 100 only"
+  } else if (answer > 100 || answer < 1) {
+    error.innerText = "WARNING: you are out of range. Only guess a Number Between 1 and 100"
+  } else {
+    error.innerText = "your last guess was..."
+  }
+
+  console.log("rangeSubmitButton is working")
+}
 
 //Button Listener
 guessButton.addEventListener("click", getGuess);
@@ -112,7 +135,9 @@ clearButton.addEventListener("click", clearButtonFunction);
 // inputCheck.addEventListener('keyup', NaNTest);
 resetButton.addEventListener('click', resetButtonFunction);
 inputCheck.addEventListener('keyup', enableButtons);
-
+rangeSubmitButton.addEventListener('click', rangeSubmit)
+lowNumber.addEventListener('keyup', rangeActivateSubmitButton);
+highNumber.addEventListener('keyup', rangeActivateSubmitButton);
 
 
 

@@ -19,8 +19,8 @@ wrapper {
   margin: 0 auto;
 }
 button {
-  margin: 40px 30px;
-  background-color: #929497;
+  margin: 30px 30px;
+  backcolor: #929497;
   border-radius: 28px;
   width: 150px;
   height: 40px;
@@ -42,14 +42,20 @@ button:disabled {
   font-size: 20px;
 }
 .small-input {
-  width: 150px;
-  line-height: 40px;
-  font-size: 20px;
+  width: 100px;
+  line-height: 20px;
+  font-size: 10px;
   display: inline-block;
 }
 .input-wrapper {
   width: 100%;
+  margin: 10px auto;
 }
+
+form {
+margin: 20px;
+}
+
 .pink {
   color: #ed458b;
 }
