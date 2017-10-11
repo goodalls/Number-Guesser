@@ -36,11 +36,19 @@ button:disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }
-input {
+#number {
   width: 400px;
   line-height: 40px;
   font-size: 20px;
-
+}
+.small-input {
+  width: 150px;
+  line-height: 40px;
+  font-size: 20px;
+  display: inline-block;
+}
+.input-wrapper {
+  width: 100%;
 }
 .pink {
   color: #ed458b;
@@ -61,4 +69,6 @@ h3 {
   font-size: 150px;
   color: #eb008b; 
 }
-
+.small-text {
+  font-size: 12px;
+}
