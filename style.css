@@ -43,9 +43,10 @@ button:disabled {
 }
 .small-input {
   width: 150px;
-  line-height: 40px;
-  font-size: 20px;
+  line-height: 20px;
+  font-size: 10px;
   display: inline-block;
+  margin: 10px;
 }
 .input-wrapper {
   width: 100%;

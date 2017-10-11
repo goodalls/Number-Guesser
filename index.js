@@ -9,8 +9,8 @@ var inputCheck = document.querySelector('#number');
 var resetButton = document.querySelector('#reset');
 var error = document.querySelector('.err');
 var randomNumber = Math.round((Math.random() * 100) + 1);
-
-
+var lowNumberInput = document.querySelector('#low-number')
+var highNumberInput = document.querySelector('#high-number')
 
 //Function to grab the number entered in the input on click of guess button
 function getGuess () {
@@ -99,6 +99,29 @@ function resetButtonFunction () {
  disableButtons()
 
 }
+//High and Low Range
+function highAndLowRangeFunction() {
+  console.log('highAndLowRangeFunction is working! SWEET!' )
+}
+//Return Value of Low input
+function returnValueOfLowInput () {
+event.preventDefault()
+ var lowNumber = parseInt(lowNumberInput.value);
+ console.log(lowNumber)
+ return lowNumber;
+
+}
+
+
+//Return Value of High input
+function returnValueOfHighInput () {
+  event.preventDefault()
+  var highNumber = parseInt(highNumberInput.value);
+  console.log(highNumber)
+  return highNumber;
+ 
+}
+
 
 
 //Button Listener
@@ -107,7 +130,8 @@ clearButton.addEventListener("click", clearButtonFunction);
 // inputCheck.addEventListener('keyup', NaNTest);
 resetButton.addEventListener('click', resetButtonFunction);
 inputCheck.addEventListener('keyup', enableButtons);
-
+lowNumberInput.addEventListener('keyup', )
+highNumberInput.addEventListener('keyup', )
 
 
 
