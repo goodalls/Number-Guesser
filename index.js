@@ -9,12 +9,13 @@ var inputCheck = document.querySelector('#number');
 var resetButton = document.querySelector('#reset');
 var error = document.querySelector('.err');
 var rangeSubmitButton = document.querySelector('#submit-range-button');
-var lowNumberInput = document.querySelector('#low-number')
-var highNumberInput = document.querySelector('#high-number')
+var lowNumberInput = document.getElementById('low-number')
+var highNumberInput = document.getElementById('high-number')
 var rangeError = document.querySelector('.range-error')
 var randomNumber = 0;
 var low = 0
 var high = 100
+
 
 //Function to grab the number entered in the input on click of guess button
 function getGuess () {
@@ -27,21 +28,16 @@ function getGuess () {
 
 //Function to Create a Random Number between 1 and 100
 function randomNumberGenerator(low, high) {
-randomNumber = Math.round((Math.random() * (high - low+1) + low));
-console.log(randomNumber + " is random number")
-console.log(low + "low Number")
-console.log(high + "high Number")
+  randomNumber = Math.round((Math.random() * (high - low+1) + low));
+  console.log(randomNumber + " is random number")
+  console.log(low + "low Number")
+  console.log(high + "high Number")
 }
-
-
 
 //event listener to run randomNumberGenerator on window.load
 window.addEventListener("load", function load(){
-    randomNumberGenerator(low, high)
+  randomNumberGenerator(low, high)
 });
-
-
-
 
 // Function to test for input data 
 function testForCorrectDataFromInput() {
@@ -55,7 +51,6 @@ function testForCorrectDataFromInput() {
   }
 }
 
-
 //Compare User Guess with the Random Number
 function checkGuessWithRandom() {
 
@@ -65,17 +60,15 @@ function checkGuessWithRandom() {
   } else if (answer > randomNumber) {
     yourGuess.innerText = "that is too High, go again?"
   } else if (answer === randomNumber) {
-    yourGuess.innerText = "Boom"
-    window.alert("Winner Winner Chicken Dinner")
+    yourGuess.innerText = "Boom" 
+    window.alert("Winner Winner Chicken Dinner; "+randomNumber+" is correct!")
     plusMinusTen()
   } else {
-    yourGuess.innerText = "Boom Chicka Boom"
+    yourGuess.innerText = "I am BROKEN"
   }
 }
 
-
-
-//Clear Buttons
+//Clear Button
 function clearButtonFunction (){
   event.preventDefault()
   document.getElementById("number").value = "";
@@ -103,11 +96,11 @@ function resetButtonFunction () {
   guessNumber.innerText = "";
   guess.innerText = "##";
   error.innerText = "";
-  lowNumberInput.innerText = "";
-  highNumberInput.innerText = "";
+  lowNumberInput.value = "";
+  highNumberInput.value = "";
   document.getElementById("number").value = "";
-  randomNumberGenerator(low, high) 
-  disableButtons()
+  randomNumberGenerator(0, 100) 
+  disableButtons() 
 }
 
 //Function when something entered in the Range Input to activate the Range Submit and Reset Buttons
@@ -121,11 +114,10 @@ function rangeSubmit () {
   event.preventDefault()
   low = parseInt(lowNumberInput.value);
   high = parseInt(highNumberInput.value);
-  resetButtonFunction();
   randomNumberGenerator (low, high);
   if (isNaN(low) || isNaN(high)) {
     rangeError.innerText = "Thats Not a Number, please try again"
-    setTimeout(resetButtonFunction() , 2000);
+    setTimeout(resetButtonFunction , 5000);
   } 
 }
 
@@ -135,7 +127,6 @@ function plusMinusTen() {
   var highPlusTen = (high + 10);
   randomNumberGenerator (lowMinusTen, highPlusTen);
 }
-
 
 //Button Listener
 guessButton.addEventListener("click", getGuess);
