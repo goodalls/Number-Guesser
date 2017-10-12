@@ -30,6 +30,7 @@ function randomNumberGenerator(low, high) {
 randomNumber = Math.round((Math.random() * (high - low+1) + low));
 console.log(randomNumber + " is random number")
 }
+
 //Function to test for NaN
 // function NaNTest() {
 //   console.log("testing the NaNTest Function");
@@ -49,9 +50,9 @@ window.addEventListener("load", function load(){
 function testForCorrectDataFromInput() {
   var answer = parseInt(guessNumber.value);
   if (isNaN(answer)) {
-    error.innerText = "Thats Not a Number, please guess again with a number between 1 and 100 only"
+    error.innerText = "Thats Not a Number, please guess again with a number between " +low+ " and " +high+ " only"
   } else if (answer > high || answer < low) {
-    error.innerText = "WARNING: you are out of range. Only guess a Number Between 1 and 100"
+    error.innerText = "WARNING: you are out of range. Only guess a Number Between "+low+" and "+high+"."
   } else {
     error.innerText = "your last guess was..."
   }
@@ -63,17 +64,16 @@ function checkGuessWithRandom() {
 
   var  answer = parseInt(guessNumber.value);
   if (answer < randomNumber) {
-    yourGuess.innerText = "that is too Low"
+    yourGuess.innerText = "that is too Low, try again."
   } else if (answer > randomNumber) {
-    yourGuess.innerText = "that is too High"
+    yourGuess.innerText = "that is too High, go again?"
   } else if (answer === randomNumber) {
     yourGuess.innerText = "Boom"
     window.alert("Winner Winner Chicken Dinner")
 //plusten ()
 } else {
   yourGuess.innerText = "Boom Chicka Boom"
-
-}
+  }
 }
 
 
