@@ -52,13 +52,14 @@ button:disabled {
   width: 100px;
   line-height: 20px;
   font-size: 10px;
-  display: inline-block;
+  display: inline;
 }
 
 .input-wrapper {
-  width: 40%;
+  width: 70%;
   margin: 10px auto;
   border: 1px solid #ed458b;
+  background-color: #e6e7e8;
 }
 
 .padding {
@@ -101,4 +102,5 @@ h3 {
 
 .small-text {
   font-size: 12px;
+  display: inline;
 }

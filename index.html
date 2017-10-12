@@ -6,13 +6,11 @@
   <link rel="stylesheet" type="text/css" href="./reset.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="./style.css">
-
 </head>
 <body>
   <wrapper>
     <header>
       <h1><span class="pink">Number</span><span class="grey"> Guesser</span> </h1>
-
     </header>
     <section>
       <form>
@@ -22,30 +20,28 @@
         <button disabled id="guess-button">Guess</button>
         <button disabled id="clear-button">Clear</button>
       </form>
-      <section>
+    <section>
         <p class="err"></p>
         <h3 class="guess">##</h3>
         <p class="your-guess"></p>
-
         <div class="input-wrapper">
-          <p class="padding">your turn please choose a range for the number guessing game</p>
+          <p class="padding">your turn, please choose a range for the number guessing game</p>
           <form>
-            <input class="small-input" type="text" id="low-number" placeholder="Low number">
             <label for="low-number"></label>
+            <input class="small-input" type="text" id="low-number" placeholder="Low number">
             <p class="small-text"><--- low number | high number---></p>
-              <input class="small-input" type="text" id="high-number" placeholder="High number">
-              <label for="high-number"></label>
-              <br>
-              <p class="range-error"></p>
-              <button disabled id="submit-range-button">Submit Range</button>
-            </form>
+            <label for="high-number"></label>
+            <input class="small-input" type="text" id="high-number" placeholder="High number">
+            <br>
+            <p class="range-error"></p>
+            <button disabled id="submit-range-button">Submit Range</button>
+            <button disabled id="reset">Reset</button>
+          </form>
           </div><!-- /input-wrapper -->
         </section>
-        <form>
-          <button disabled id="reset">Reset</button>
-        </form>
-      </section>
-    </wrapper>
-    <script src="./index.js"></script>
-  </body>
-  </html>
+        
+    </section>
+  </wrapper>
+<script src="./index.js"></script>
+</body>
+</html>

@@ -128,7 +128,7 @@ function plusMinusTen() {
   randomNumberGenerator (lowMinusTen, highPlusTen);
 }
 
-//Button Listener
+//Button Listeners
 guessButton.addEventListener("click", getGuess);
 clearButton.addEventListener("click", clearButtonFunction);
 resetButton.addEventListener('click', resetButtonFunction);
