@@ -29,14 +29,11 @@ function getGuess () {
 function randomNumberGenerator(low, high) {
 randomNumber = Math.round((Math.random() * (high - low+1) + low));
 console.log(randomNumber + " is random number")
+console.log(low + "low Number")
+console.log(high + "high Number")
 }
 
-//Function to test for NaN
-// function NaNTest() {
-//   console.log("testing the NaNTest Function");
-//   enableButtons();
 
-// };
 
 //event listener to run randomNumberGenerator on load
 window.addEventListener("load", function load(){
@@ -70,8 +67,8 @@ function checkGuessWithRandom() {
   } else if (answer === randomNumber) {
     yourGuess.innerText = "Boom"
     window.alert("Winner Winner Chicken Dinner")
-//plusten ()
-} else {
+    plusMinusTen()
+  } else {
   yourGuess.innerText = "Boom Chicka Boom"
   }
 }
@@ -134,11 +131,17 @@ function rangeSubmit () {
   console.log("rangeSubmitButton is working")
 }
 
+function plusMinusTen() {
+  var lowMinusTen = (low - 10)
+  var highPlusTen = (high + 10)
+  randomNumberGenerator (lowMinusTen, highPlusTen)
+
+}
+
 
 //Button Listener
 guessButton.addEventListener("click", getGuess);
 clearButton.addEventListener("click", clearButtonFunction);
-// inputCheck.addEventListener('keyup', NaNTest);
 resetButton.addEventListener('click', resetButtonFunction);
 inputCheck.addEventListener('keyup', enableButtons);
 rangeSubmitButton.addEventListener('click', rangeSubmit)
