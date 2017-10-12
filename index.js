@@ -8,11 +8,11 @@ var clearButton = document.querySelector('#clear-button');
 var inputCheck = document.querySelector('#number');
 var resetButton = document.querySelector('#reset');
 var error = document.querySelector('.err');
-var randomNumber = 0;
 var rangeSubmitButton = document.querySelector('#submit-range-button');
-var lowNumber = document.querySelector('#low-number')
-var highNumber = document.querySelector('#high-number')
+var lowNumberInput = document.querySelector('#low-number')
+var highNumberInput = document.querySelector('#high-number')
 var rangeError = document.querySelector('.range-error')
+var randomNumber = 0;
 var low = 0
 var high = 100
 
@@ -35,7 +35,7 @@ console.log(high + "high Number")
 
 
 
-//event listener to run randomNumberGenerator on load
+//event listener to run randomNumberGenerator on window.load
 window.addEventListener("load", function load(){
     randomNumberGenerator(low, high)
 });
@@ -69,7 +69,7 @@ function checkGuessWithRandom() {
     window.alert("Winner Winner Chicken Dinner")
     plusMinusTen()
   } else {
-  yourGuess.innerText = "Boom Chicka Boom"
+    yourGuess.innerText = "Boom Chicka Boom"
   }
 }
 
@@ -78,13 +78,11 @@ function checkGuessWithRandom() {
 //Clear Buttons
 function clearButtonFunction (){
   event.preventDefault()
-  console.log("clearButton Function is working")
   document.getElementById("number").value = "";
 }
 
 //Disable buttons
 function disableButtons () {
-  console.log("disableButtons is working");
   document.getElementById('guess-button').disabled = true;
   document.getElementById('clear-button').disabled = true;
   document.getElementById('reset').disabled = true;
@@ -93,7 +91,6 @@ function disableButtons () {
 
 // Enable Buttons
 function enableButtons () {
-  console.log("enableButtons is working");
   document.querySelector('#guess-button').disabled = false;
   document.querySelector('#clear-button').disabled = false;
   document.querySelector('#reset').disabled = false;
@@ -102,40 +99,41 @@ function enableButtons () {
 
 //Reset Buttons
 function resetButtonFunction () {
-
   yourGuess.innerText = "";
   guessNumber.innerText = "";
   guess.innerText = "##";
   error.innerText = "";
+  lowNumberInput.innerText = "";
+  highNumberInput.innerText = "";
   document.getElementById("number").value = "";
   randomNumberGenerator(low, high) 
   disableButtons()
-
 }
 
+//Function when something entered in the Range Input to activate the Range Submit and Reset Buttons
 function rangeActivateSubmitButton() {
   document.getElementById('submit-range-button').disabled = false;
+  document.querySelector('#reset').disabled = false;
 }
 
 //get range from the input fields
 function rangeSubmit () {
   event.preventDefault()
-  low = parseInt(lowNumber.value);
-  high = parseInt(highNumber.value)
-  resetButtonFunction()
-  randomNumberGenerator (low, high)
+  low = parseInt(lowNumberInput.value);
+  high = parseInt(highNumberInput.value);
+  resetButtonFunction();
+  randomNumberGenerator (low, high);
   if (isNaN(low) || isNaN(high)) {
     rangeError.innerText = "Thats Not a Number, please try again"
+    setTimeout(resetButtonFunction() , 2000);
   } 
-
-  console.log("rangeSubmitButton is working")
 }
 
+//Adds and subtracts 10 from the winning values
 function plusMinusTen() {
-  var lowMinusTen = (low - 10)
-  var highPlusTen = (high + 10)
-  randomNumberGenerator (lowMinusTen, highPlusTen)
-
+  var lowMinusTen = (low - 10);
+  var highPlusTen = (high + 10);
+  randomNumberGenerator (lowMinusTen, highPlusTen);
 }
 
 
@@ -145,8 +143,8 @@ clearButton.addEventListener("click", clearButtonFunction);
 resetButton.addEventListener('click', resetButtonFunction);
 inputCheck.addEventListener('keyup', enableButtons);
 rangeSubmitButton.addEventListener('click', rangeSubmit)
-lowNumber.addEventListener('keyup', rangeActivateSubmitButton);
-highNumber.addEventListener('keyup', rangeActivateSubmitButton);
+lowNumberInput.addEventListener('keyup', rangeActivateSubmitButton);
+highNumberInput.addEventListener('keyup', rangeActivateSubmitButton);
 
 
 
